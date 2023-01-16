@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
 <jsp:include page="head.jsp"></jsp:include>
-<body>
+<body >
 <jsp:include page="navbar.jsp"></jsp:include>
 <c:if test="${operation == true}">
     <div class="alert alert-success" role="alert">
@@ -11,10 +11,10 @@
     </div>
 </c:if>
 
-<div class="container">
+<div class="container" style="padding-top: 3rem" >
     <form action="${pageContext.request.contextPath}/creaProgetto" method="post">
         <div class="mb-3">
-            <label for="nome" class="form-label">Name</label>
+            <label for="nome" class="form-label">Nome</label>
             <input type="text" name="nome" class="form-control" id="nome" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">

@@ -46,7 +46,7 @@ public class ProgettoController {
     public ModelAndView delete(@RequestParam String id){
         if(!id.isEmpty()) {
             progettoBO.deleteByid(Long.parseLong(id));
-            return new ModelAndView("/jsp/progetti.jsp");
+            return new ModelAndView("/jsp/index.jsp");
         }
         return new ModelAndView("/jsp/error.jsp");
     }
