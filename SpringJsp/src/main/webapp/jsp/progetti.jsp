@@ -3,14 +3,16 @@
 <jsp:include page="head.jsp"></jsp:include>
 <jsp:include page="navbar.jsp"></jsp:include>
 <body>
-<div class="container text-center" style="padding-top: 3rem; margin-left: 5%; margin-right: 5%; text-align: center">
+<div class="container text-center" style="padding-top: 3rem;">
     <div class="row">
         <c:forEach var="lista" items="${lista}">
-            <div class="card col" style="width: 30rem;">
+            <div class="card col" style="width: 30rem;margin-right: 1rem">
                 <div class="card-body">
                     <h5 class="card-title"><c:out value="${lista.getNome()}"/></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><c:out value="${lista.getSkill()}"/></h6>
                     <p class="card-text"><c:out value="${lista.getDescrizione()}"/></p>
+                    <a href="${pageContext.request.contextPath}/deleteProgetto?id=${lista.getId()}" class="card-link">Cancella</a>
+                    <a href="${pageContext.request.contextPath}/updateDaLista?id=${lista.getId()}" class="card-link">Modifica</a>
                 </div>
             </div>
     </c:forEach>
