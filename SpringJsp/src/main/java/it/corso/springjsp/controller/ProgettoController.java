@@ -17,7 +17,7 @@ public class ProgettoController {
     @Autowired
     ProgettoBOImpl progettoBO;
 
-    @GetMapping( path = "/index")
+    @GetMapping( path ={"/index","/"} )
     public ModelAndView home(){
         return new ModelAndView("/jsp/index.jsp");
     }
@@ -28,11 +28,11 @@ public class ProgettoController {
         return new ModelAndView("/jsp/progetti.jsp","lista",lista);
     }
 
-    @GetMapping("creaProgetto")
+    @GetMapping("admin/creaProgetto")
     public ModelAndView creaInfo(){
-        return new ModelAndView("jsp/crea.jsp");
+        return new ModelAndView("/jsp/crea.jsp");
     }
-    @PostMapping("creaProgetto")
+    @PostMapping("admin/creaProgetto")
     public ModelAndView creaInfo(@RequestParam String nome, String descrizione , String skill){
         Progetto p = new Progetto();
         p.setNome(nome);
@@ -42,7 +42,7 @@ public class ProgettoController {
         return new ModelAndView("/jsp/crea.jsp","operation",true);
     }
 
-    @GetMapping("deleteProgetto")
+    @GetMapping("admin/deleteProgetto")
     public ModelAndView delete(@RequestParam String id){
         if(!id.isEmpty()) {
             progettoBO.deleteByid(Long.parseLong(id));
@@ -51,12 +51,12 @@ public class ProgettoController {
         return new ModelAndView("/jsp/error.jsp");
     }
 
-    @GetMapping("updateDaLista")
+    @GetMapping("admin/updateDaLista")
     public ModelAndView UpdateDaLista(@RequestParam String id){
         return new ModelAndView("/jsp/update.jsp", "idDaModificare", id);
     }
 
-    @PostMapping("updateDaLista")
+    @PostMapping("admin/updateDaLista")
     public ModelAndView updateInfo(@RequestParam String id, @RequestParam String nome , @RequestParam String descrizione, @RequestParam String skill){
         long idLong = Long.parseLong(id);
         progettoBO.update(idLong,nome,descrizione, skill);

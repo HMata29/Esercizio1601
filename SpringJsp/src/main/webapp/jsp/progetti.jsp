@@ -14,8 +14,12 @@ box-shadow:  39px -39px 89px #d4d3c7,
                     <h5 class="card-title"><c:out value="${lista.getNome()}"/></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><c:out value="${lista.getSkill()}"/></h6>
                     <p class="card-text"><c:out value="${lista.getDescrizione()}"/></p>
-                    <a href="${pageContext.request.contextPath}/deleteProgetto?id=${lista.getId()}" class="card-link">Cancella</a>
-                    <a href="${pageContext.request.contextPath}/updateDaLista?id=${lista.getId()}" class="card-link">Modifica</a>
+                    <sec:authorize access="isAuthenticated()">
+                    <a href="${pageContext.request.contextPath}/admin/deleteProgetto?id=${lista.getId()}" class="card-link">Cancella</a>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                    <a href="${pageContext.request.contextPath}/admin/updateDaLista?id=${lista.getId()}" class="card-link">Modifica</a>
+                    </sec:authorize>
                 </div>
             </div>
     </c:forEach>

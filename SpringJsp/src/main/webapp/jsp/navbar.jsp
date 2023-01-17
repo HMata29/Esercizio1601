@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #5e79ff">
     <div  class="container-fluid">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index">HM</a>
@@ -7,14 +10,26 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/index">Home</a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/getAll">Lista</a>
                 </li>
+                <sec:authorize access="isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/creaProgetto">Crea</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/creaProgetto">Crea</a>
                 </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/logout">Logout</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/login">Login</a>
+                    </li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
